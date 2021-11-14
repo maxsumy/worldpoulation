@@ -49,3 +49,34 @@ export const loadGames = () => async (dispatch) => {
     });
 };
 
+export const loadCountryDate = (country) => async (dispatch) => {
+
+    const options3 = {
+        method: 'GET',
+        url: 'https://world-population.p.rapidapi.com/population',
+        params: {country_name: country},
+        headers: {
+            'x-rapidapi-host': 'world-population.p.rapidapi.com',
+            'x-rapidapi-key': '8ff973bad1mshfac24ee6a73421dp1bb7a2jsn1f3041e8c532'
+        }
+    };
+
+    let countryDate;
+    await  axios.request(options3).then(function (response) {
+        countryDate = response.data;
+
+    }).catch(function (error) {
+        console.error(error);
+    });
+
+
+    dispatch({
+        type: "FETCH_COUNTRY_DATE",
+        payload: {
+            population: countryDate.body.population,
+            country_name: countryDate.body.country_name
+        },
+
+    });
+};
+

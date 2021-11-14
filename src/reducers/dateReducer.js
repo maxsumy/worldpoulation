@@ -2,6 +2,7 @@ const initState = {
     countries_names: [],
     total_countries: [],
     world_population: [],
+    country_name: [],
     country_population: []
 };
 
@@ -15,16 +16,13 @@ const dateReducer = (state = initState, action) => {
                 total_countries: action.payload.total_countries,
 
             };
-        case "FETCH_WORLD_POPULATION":
+        case "FETCH_COUNTRY_DATE":
             return {
                 ...state,
-                world_population: action.payload.world_population,
+                country_population: action.payload.population,
+                country_name: action.payload.country_name,
             };
-        case "FETCH_COUNTRY_POPULATION":
-            return {
-                ...state,
-                country_population: action.payload.country_population,
-            };
+
         default:
             return { ...state };
     }
