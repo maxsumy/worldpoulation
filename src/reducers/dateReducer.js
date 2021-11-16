@@ -2,8 +2,8 @@ const initState = {
     countries_names: [],
     total_countries: [],
     world_population: [],
-    country_name: [],
-    country_population: []
+    country_date: {},
+    loading: false,
 };
 
 const dateReducer = (state = initState, action) => {
@@ -19,8 +19,8 @@ const dateReducer = (state = initState, action) => {
         case "FETCH_COUNTRY_DATE":
             return {
                 ...state,
-                country_population: action.payload.population,
-                country_name: action.payload.country_name,
+                country_date: action.payload.country_date,
+                loading: action.payload.loading,
             };
 
         default:

@@ -73,8 +73,8 @@ export const loadCountryDate = (country) => async (dispatch) => {
     dispatch({
         type: "FETCH_COUNTRY_DATE",
         payload: {
-            population: countryDate.body.population,
-            country_name: countryDate.body.country_name
+            country_date: countryDate.body,
+            loading: true,
         },
 
     });
